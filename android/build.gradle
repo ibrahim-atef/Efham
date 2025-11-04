@@ -21,10 +21,6 @@ allprojects {
 }
 
 subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-
-subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             project.android {
@@ -39,6 +35,13 @@ subprojects {
 }
 
 rootProject.buildDir = '../build'
+subprojects {
+    // Exclude app module from custom buildDir - Flutter needs it at android/app/build
+    // All other modules (plugins) use the custom buildDir
+    if (project.name != 'app') {
+        project.buildDir = "${rootProject.buildDir}/${project.name}"
+    }
+}
 subprojects {
     project.evaluationDependsOn(':app')
 }
