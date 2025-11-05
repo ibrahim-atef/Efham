@@ -4,5 +4,6 @@ import 'package:webinar/common/data/app_language.dart';
 import 'package:webinar/locator.dart';
 
 AppLocalizations get appText {
-  return lookupAppLocalizations(Locale(locator<AppLanguage>().currentLanguage));
+  final currentLanguage = locator<AppLanguage>().currentLanguage.toLowerCase();
+  return lookupAppLocalizations(Locale(currentLanguage));
 }

@@ -29,6 +29,20 @@ subprojects {
                 }
                 // Ensure compileSdkVersion is set for all plugins
                 compileSdkVersion 34
+                
+                // Ensure Java 17 compatibility for all plugins
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_17
+                    targetCompatibility JavaVersion.VERSION_17
+                }
+            }
+        }
+        
+        // Set Kotlin JVM target to 17 for all projects
+        tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+         
+            kotlinOptions {
+                jvmTarget = "17"
             }
         }
     }
@@ -41,6 +55,7 @@ subprojects {
     if (project.name != 'app') {
         project.buildDir = "${rootProject.buildDir}/${project.name}"
     }
+    // Let app module use default location which Flutter will handle
 }
 subprojects {
     project.evaluationDependsOn(':app')
