@@ -121,3 +121,57 @@ dependencies {
 
 apply plugin: 'com.google.gms.google-services'
 android.buildTypes.release.ndk.debugSymbolLevel = 'FULL'
+
+// Copy APK files to root build directory for tools that expect them there
+afterEvaluate {
+    android.applicationVariants.all { variant ->
+        def variantName = variant.name.capitalize()
+        def packageTask = tasks.findByName("package${variantName}")
+        
+        if (packageTask != null) {
+            packageTask.doLast {
+                def buildType = variant.buildType.name
+                def apkFile = file("build/outputs/apk/${buildType}/app-${buildType}.apk")
+                def flutterApkFile = file("build/outputs/flutter-apk/app-${buildType}.apk")
+                def rootBuildDir = file("${rootProject.projectDir}/../build")
+                def flutterApkDir = file("${rootProject.projectDir}/../build/app/outputs/flutter-apk")
+                
+                if (!rootBuildDir.exists()) {
+                    rootBuildDir.mkdirs()
+                }
+                
+                if (!flutterApkDir.exists()) {
+                    flutterApkDir.mkdirs()
+                }
+                
+                // Copy from standard APK location to root build directory
+                if (apkFile.exists()) {
+                    copy {
+                        from apkFile
+                        into rootBuildDir
+                        rename { "app-${buildType}.apk" }
+                    }
+                    println "Copied APK to ${rootBuildDir}/app-${buildType}.apk"
+                    
+                    // Also copy to Flutter's expected location
+                    copy {
+                        from apkFile
+                        into flutterApkDir
+                        rename { "app-${buildType}.apk" }
+                    }
+                    println "Copied APK to ${flutterApkDir}/app-${buildType}.apk"
+                }
+                
+                // Also copy from Flutter APK location
+                if (flutterApkFile.exists()) {
+                    copy {
+                        from flutterApkFile
+                        into rootBuildDir
+                        rename { "app-${buildType}-flutter.apk" }
+                    }
+                    println "Copied Flutter APK to ${rootBuildDir}/app-${buildType}-flutter.apk"
+                }
+            }
+        }
+    }
+}

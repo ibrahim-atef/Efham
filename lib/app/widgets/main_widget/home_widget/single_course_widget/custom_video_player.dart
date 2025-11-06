@@ -475,7 +475,6 @@ class _VimeoVideoPlayerState extends State<PodVideoPlayerDev> {
   }
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,

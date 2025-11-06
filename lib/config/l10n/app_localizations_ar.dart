@@ -1,8 +1,4 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
-
-// ignore_for_file: type=lint
 
 /// The translations for Arabic (`ar`).
 class AppLocalizationsAr extends AppLocalizations {
@@ -69,8 +65,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get createAnAccount => 'إنشاء حساب';
 
   @override
-  String get termsPoliciesDesc =>
-      'باستخدام خدماتنا، فإنك توافق على الشروط والسياسات الخاصة بنا. ';
+  String get termsPoliciesDesc => 'باستخدام خدماتنا، فإنك توافق على الشروط والسياسات الخاصة بنا. ';
 
   @override
   String get haveAnAccount => 'هل لديك حساب؟';
@@ -91,8 +86,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get forgetPassword => 'نسيت كلمة المرور';
 
   @override
-  String get forgetPasswordDesc =>
-      'لا تقلق، سيتم إعادة تعيين كلمة المرور الخاصة بك.';
+  String get forgetPasswordDesc => 'لا تقلق، سيتم إعادة تعيين كلمة المرور الخاصة بك.';
 
   @override
   String get haventReceiveTheCode => 'لم تتلقى الرمز؟';
@@ -326,8 +320,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resultNotFound => 'لم يتم العثور على النتيجة';
 
   @override
-  String get tryMoreAccurateWordsToReachResults =>
-      'حاول استخدام كلمات أكثر دقة للوصول إلى النتائج.';
+  String get tryMoreAccurateWordsToReachResults => 'حاول استخدام كلمات أكثر دقة للوصول إلى النتائج.';
 
   @override
   String get instrcutors => 'المدربين';
@@ -366,8 +359,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get submitComment => 'إرسال تعليق';
 
   @override
-  String get submitCommentDesc =>
-      'فيما يتعلق بتجربتي، يعد هذا المرشد أحد أفضل المرشدين حول العالم.';
+  String get submitCommentDesc => 'فيما يتعلق بتجربتي، يعد هذا المرشد أحد أفضل المرشدين حول العالم.';
 
   @override
   String get commentOptions => 'خيارات التعليق';
@@ -535,8 +527,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get writeReview => 'أكتب مراجعة';
 
   @override
-  String get writeReviewDesc =>
-      'فيما يتعلق بتجربتي، يعد هذا المرشد أحد أفضل المرشدين حول العالم.';
+  String get writeReviewDesc => 'فيما يتعلق بتجربتي، يعد هذا المرشد أحد أفضل المرشدين حول العالم.';
 
   @override
   String get submit => 'يُقدِّم';
@@ -722,8 +713,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get accessDenied => 'تم الرفض!';
 
   @override
-  String get accessDeniedDesc =>
-      'تحتاج إلى اجتياز الجزء السابق للوصول إلى هذا الجزء.';
+  String get accessDeniedDesc => 'تحتاج إلى اجتياز الجزء السابق للوصول إلى هذا الجزء.';
 
   @override
   String get no => 'لا';
@@ -753,8 +743,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get back => 'خلف';
 
   @override
-  String get successAddToCartDesc =>
-      'انتقل إلى عربة التسوق الخاصة بك لإكمال الطلب';
+  String get successAddToCartDesc => 'انتقل إلى عربة التسوق الخاصة بك لإكمال الطلب';
 
   @override
   String get notAccessContent => 'ليس لديك حق الوصول إلى هذا المحتوى';
@@ -817,8 +806,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sendMessage => 'أرسل رسالة';
 
   @override
-  String get reserveMeetingDesc =>
-      'حجز اجتماع مباشر مع هذا المستخدم\nالرسوم بالساعة:';
+  String get reserveMeetingDesc => 'حجز اجتماع مباشر مع هذا المستخدم\nالرسوم بالساعة:';
 
   @override
   String get reserveMeeting => 'حجز اجتماع';
@@ -884,8 +872,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get inPersonMeetingHourlyRate => 'معدل الاجتماع الشخصي بالساعة: ';
 
   @override
-  String get instructorConductsGroupMeetings =>
-      'يقوم المعلم بإجراء اجتماعات جماعية.';
+  String get instructorConductsGroupMeetings => 'يقوم المعلم بإجراء اجتماعات جماعية.';
 
   @override
   String get conductionType => 'نوع التوصيل';
@@ -1095,8 +1082,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noOfflinePayments => 'لا توجد مدفوعات دون اتصال بالإنترنت!';
 
   @override
-  String get noOfflinePaymentsDesc =>
-      'ليس لديك أي طلبات دفع دون اتصال بالإنترنت.';
+  String get noOfflinePaymentsDesc => 'ليس لديك أي طلبات دفع دون اتصال بالإنترنت.';
 
   @override
   String get noPayout => 'لا دفع تعويضات!';
@@ -1117,8 +1103,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get requestPayout => 'طلب دفع تعويضات';
 
   @override
-  String get requestPayoutDesc =>
-      'يرجى مراجعة معلومات حسابك وسنقوم بإرسال الأموال إليه';
+  String get requestPayoutDesc => 'يرجى مراجعة معلومات حسابك وسنقوم بإرسال الأموال إليه';
 
   @override
   String get cardID => 'بطاقة الهوية';
@@ -1361,15 +1346,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get waitForFinalResult => 'انتظر النتيجة النهائية';
 
   @override
-  String get waitForFinalResultDesc =>
-      'يتضمن الاختبار الخاص بك أسئلة وصفية\nيُرجى الانتظار حتى مراجعة المدرس.';
+  String get waitForFinalResultDesc => 'يتضمن الاختبار الخاص بك أسئلة وصفية\nيُرجى الانتظار حتى مراجعة المدرس.';
 
   @override
   String get youFailedTheQuiz => 'لقد فشلت في الاختبار';
 
   @override
-  String get youFailedTheQuizDesc =>
-      'آسف! لقد فشلت في الاختبار...\nيمكنك المحاولة مرة أخرى.';
+  String get youFailedTheQuizDesc => 'آسف! لقد فشلت في الاختبار...\nيمكنك المحاولة مرة أخرى.';
 
   @override
   String get submitDate => 'تاريخ النشر';
@@ -1435,8 +1418,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reviewTheResult => 'قم بمراجعة النتيجة';
 
   @override
-  String get reviewTheResultDesc =>
-      'يتضمن الاختبار الخاص بك أسئلة وصفية\nيُرجى مراجعته.';
+  String get reviewTheResultDesc => 'يتضمن الاختبار الخاص بك أسئلة وصفية\nيُرجى مراجعته.';
 
   @override
   String get quizCerts => 'شهادات الاختبار.';
@@ -1454,8 +1436,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shareCertificate => 'شهادة الأسهم';
 
   @override
-  String get shareCertificateDesc =>
-      'يمكنك مشاركة هذه الشهادة باستخدام الشبكات الاجتماعية\nوتشجيع الآخرين على التعلم.';
+  String get shareCertificateDesc => 'يمكنك مشاركة هذه الشهادة باستخدام الشبكات الاجتماعية\nوتشجيع الآخرين على التعلم.';
 
   @override
   String get takenDate => 'تاريخ الالتقاط';
@@ -1473,8 +1454,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get certificateOverview => 'نظرة عامة على الشهادة';
 
   @override
-  String get certificateOverviewDesc =>
-      'يمكنك تقييم جودة تعلم طلابك\nباستخدام المعلومات التالية';
+  String get certificateOverviewDesc => 'يمكنك تقييم جودة تعلم طلابك\nباستخدام المعلومات التالية';
 
   @override
   String get certificateStudents => 'طلاب الشهادة';
@@ -1594,8 +1574,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get newPassword => 'كلمة المرور الجديدة';
 
   @override
-  String get passwordAndRetypePassNotMatch =>
-      'كلمة المرور الجديدة لا تتطابق مع كلمة المرور الجديدة';
+  String get passwordAndRetypePassNotMatch => 'كلمة المرور الجديدة لا تتطابق مع كلمة المرور الجديدة';
 
   @override
   String get nextBadges => 'الشارات التالية';
@@ -1688,8 +1667,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get inappLiveSession => 'جلسة حية داخل التطبيق';
 
   @override
-  String get inappLiveSessionQuestion =>
-      'هل أنت متأكد من إنشاء جلسة مباشرة داخل التطبيق لهذا الاجتماع؟';
+  String get inappLiveSessionQuestion => 'هل أنت متأكد من إنشاء جلسة مباشرة داخل التطبيق لهذا الاجتماع؟';
 
   @override
   String get theMeetingDateIs => 'موعد اللقاء هو ';
@@ -1722,15 +1700,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privateContent => 'محتوى خاص!';
 
   @override
-  String get privateContentDesc =>
-      'تحتاج إلى تسجيل الدخول للوصول إلى محتوى الدورة.';
+  String get privateContentDesc => 'تحتاج إلى تسجيل الدخول للوصول إلى محتوى الدورة.';
 
   @override
   String get pendingVerification => 'في انتظار التحقق!';
 
   @override
-  String get pendingVerificationDesc =>
-      'حسابك قيد المراجعة وستتمكن من الوصول إلى المحتوى بعد الموافقة عليه';
+  String get pendingVerificationDesc => 'حسابك قيد المراجعة وستتمكن من الوصول إلى المحتوى بعد الموافقة عليه';
 
   @override
   String get private => 'خاص';
@@ -1793,8 +1769,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get networkProblem => 'مشكلة شبكة!';
 
   @override
-  String get networkProblemDesc =>
-      'يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى...';
+  String get networkProblemDesc => 'يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى...';
 
   @override
   String get myCourses => 'دوراتي';
