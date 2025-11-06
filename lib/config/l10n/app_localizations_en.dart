@@ -1,4 +1,8 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
@@ -23,16 +27,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get introTitle4 => 'Start learning now';
 
   @override
-  String get introDesc1 => 'Interested in to learn from the best teachers around the world?';
+  String get introDesc1 =>
+      'Interested in to learn from the best teachers around the world?';
 
   @override
-  String get introDesc2 => 'Looking for a private teacher? Book a private meeting now!';
+  String get introDesc2 =>
+      'Looking for a private teacher? Book a private meeting now!';
 
   @override
-  String get introDesc3 => 'Start teaching right now and share your valuable knowledge.';
+  String get introDesc3 =>
+      'Start teaching right now and share your valuable knowledge.';
 
   @override
-  String get introDesc4 => 'Start learning from the best instructors in different topics.';
+  String get introDesc4 =>
+      'Start learning from the best instructors in different topics.';
 
   @override
   String get getStart => 'Get Started';
@@ -65,7 +73,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createAnAccount => 'Create an Account';
 
   @override
-  String get termsPoliciesDesc => 'By using our services,  you are agreeing to our\nTerms & Policies. ';
+  String get termsPoliciesDesc =>
+      'By using our services,  you are agreeing to our\nTerms & Policies. ';
 
   @override
   String get haveAnAccount => 'Have an account?';
@@ -86,7 +95,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgetPassword => 'Forget Password';
 
   @override
-  String get forgetPasswordDesc => 'Don\'t be worried, your password will reset.';
+  String get forgetPasswordDesc =>
+      'Don\'t be worried, your password will reset.';
 
   @override
   String get haventReceiveTheCode => 'Havent receive the code?';
@@ -101,7 +111,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountVerification => 'Account Verification';
 
   @override
-  String get accountVerificationDesc => 'Insert the verification code that sent to you...';
+  String get accountVerificationDesc =>
+      'Insert the verification code that sent to you...';
 
   @override
   String get selectlanguage => 'Select a Language';
@@ -320,7 +331,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resultNotFound => 'Result not found...';
 
   @override
-  String get tryMoreAccurateWordsToReachResults => 'Please use clearer words for improved results';
+  String get tryMoreAccurateWordsToReachResults =>
+      'Please use clearer words for improved results';
 
   @override
   String get instrcutors => 'Instructors';
@@ -332,19 +344,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noInstructor => 'No Instructor';
 
   @override
-  String get noInstructorDesc => 'There are no instructors available in this app';
+  String get noInstructorDesc =>
+      'There are no instructors available in this app';
 
   @override
   String get noOrganization => 'No Organization';
 
   @override
-  String get noOrganizationDesc => 'There are no organizations available in this app';
+  String get noOrganizationDesc =>
+      'There are no organizations available in this app';
 
   @override
   String get noConsultants => 'No Consultants';
 
   @override
-  String get noConsultantsDesc => 'There are no consultants available in this app';
+  String get noConsultantsDesc =>
+      'There are no consultants available in this app';
 
   @override
   String get availableForMeetings => 'Available for meetings';
@@ -359,7 +374,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get submitComment => 'Submit Comment';
 
   @override
-  String get submitCommentDesc => 'Regarding to my experience, this mentor is one of the best mentors in the world.';
+  String get submitCommentDesc =>
+      'Regarding to my experience, this mentor is one of the best mentors in the world.';
 
   @override
   String get commentOptions => 'Comment Options';
@@ -521,13 +537,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewTheCourse => 'Review the Course';
 
   @override
-  String get reviewTheCourseDesc => 'Rate the course as stars then write your comment';
+  String get reviewTheCourseDesc =>
+      'Rate the course as stars then write your comment';
 
   @override
   String get writeReview => 'Write a Review';
 
   @override
-  String get writeReviewDesc => 'Regarding to my experience, this mentor is one of the best mentors around the world.';
+  String get writeReviewDesc =>
+      'Regarding to my experience, this mentor is one of the best mentors around the world.';
 
   @override
   String get submit => 'Submit';
@@ -623,7 +641,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noQuestion => 'No Question!';
 
   @override
-  String get noQuestionDesc => 'Ask a new question and communicate with other students...';
+  String get noQuestionDesc =>
+      'Ask a new question and communicate with other students...';
 
   @override
   String get notification => 'Notification';
@@ -713,7 +732,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accessDenied => 'Access Denied!';
 
   @override
-  String get accessDeniedDesc => 'You need to pass the previous part to access this part.';
+  String get accessDeniedDesc =>
+      'You need to pass the previous part to access this part.';
 
   @override
   String get no => 'No';
@@ -770,7 +790,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bankAccount => 'Bank Accounts';
 
   @override
-  String get successfulyRequest => 'Your request has been successfully registered.';
+  String get successfulyRequest =>
+      'Your request has been successfully registered.';
 
   @override
   String get followers => 'Followers';
@@ -806,7 +827,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendMessage => 'Send Message';
 
   @override
-  String get reserveMeetingDesc => 'Reserve a live meeting with this user\nHourly charge:';
+  String get reserveMeetingDesc =>
+      'Reserve a live meeting with this user\nHourly charge:';
 
   @override
   String get reserveMeeting => 'Reserve a Meeting';
@@ -833,7 +855,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noBadgesDesc => 'This instructor doesn\'t have any badges.';
 
   @override
-  String get noInstructorProfileDesc => 'The organization doesn\'t have any instructors.';
+  String get noInstructorProfileDesc =>
+      'The organization doesn\'t have any instructors.';
 
   @override
   String get pickaDate => 'Pick a Date';
@@ -872,7 +895,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get inPersonMeetingHourlyRate => 'In-person meeting hourly rate: ';
 
   @override
-  String get instructorConductsGroupMeetings => 'Instructor conducts group meetings.';
+  String get instructorConductsGroupMeetings =>
+      'Instructor conducts group meetings.';
 
   @override
   String get conductionType => 'Conduction Type';
@@ -905,7 +929,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get groupLiveCapacity => 'Group live capacity:';
 
   @override
-  String get successfullyRegisteredMeeting => 'The meeting was successfully registered';
+  String get successfullyRegisteredMeeting =>
+      'The meeting was successfully registered';
 
   @override
   String get myAssignments => 'My Assignments';
@@ -1076,13 +1101,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noBankAccounts => 'No Bank Accounts!';
 
   @override
-  String get noBankAccountsDesc => 'There are no bank accounts for offline payment.';
+  String get noBankAccountsDesc =>
+      'There are no bank accounts for offline payment.';
 
   @override
   String get noOfflinePayments => 'No offline payments!';
 
   @override
-  String get noOfflinePaymentsDesc => 'You do not have any offline payment requests.';
+  String get noOfflinePaymentsDesc =>
+      'You do not have any offline payment requests.';
 
   @override
   String get noPayout => 'No Payout!';
@@ -1103,7 +1130,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get requestPayout => 'Request Payout';
 
   @override
-  String get requestPayoutDesc => 'Please verify your account information so we can send money to it';
+  String get requestPayoutDesc =>
+      'Please verify your account information so we can send money to it';
 
   @override
   String get cardID => 'Card ID';
@@ -1181,7 +1209,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noMeetingsDesc => 'Book a meeting with your favorite consultant.';
 
   @override
-  String get noCourseClassesDesc => 'Start learning now by enrolling on courses.';
+  String get noCourseClassesDesc =>
+      'Start learning now by enrolling on courses.';
 
   @override
   String get consultant => 'Consultant';
@@ -1223,7 +1252,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get open => 'Open';
 
   @override
-  String get thereIsNoInformationToDisplay => 'Sorry, there is no information available to display.';
+  String get thereIsNoInformationToDisplay =>
+      'Sorry, there is no information available to display.';
 
   @override
   String get settings => 'Settings';
@@ -1274,7 +1304,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get financialApproval => 'Financial Approved';
 
   @override
-  String get financialApprovalDesc => 'Your financial information is not approved!';
+  String get financialApprovalDesc =>
+      'Your financial information is not approved!';
 
   @override
   String get localization => 'Localization';
@@ -1292,7 +1323,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get district => 'District';
 
   @override
-  String get passwordUpdateDesc => 'Your password has been updated successfully';
+  String get passwordUpdateDesc =>
+      'Your password has been updated successfully';
 
   @override
   String get sendDataDesc => 'Sending data... Please wait';
@@ -1340,19 +1372,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get youPassedTheQuiz => 'You passed the quiz';
 
   @override
-  String get youPassedTheQuizDesc => 'Congratulations! You passed the quiz\nsuccessfully...';
+  String get youPassedTheQuizDesc =>
+      'Congratulations! You passed the quiz\nsuccessfully...';
 
   @override
   String get waitForFinalResult => 'Wait for final result';
 
   @override
-  String get waitForFinalResultDesc => 'Your quiz includes descriptive questions\nPlease wait for instructor review.';
+  String get waitForFinalResultDesc =>
+      'Your quiz includes descriptive questions\nPlease wait for instructor review.';
 
   @override
   String get youFailedTheQuiz => 'You failed the quiz';
 
   @override
-  String get youFailedTheQuizDesc => 'Sorry! You failed the quiz...\nYou can try again.';
+  String get youFailedTheQuizDesc =>
+      'Sorry! You failed the quiz...\nYou can try again.';
 
   @override
   String get submitDate => 'Submition Date';
@@ -1418,7 +1453,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewTheResult => 'Review the result';
 
   @override
-  String get reviewTheResultDesc => 'Your quiz includes descriptive questions\nPlease review it.';
+  String get reviewTheResultDesc =>
+      'Your quiz includes descriptive questions\nPlease review it.';
 
   @override
   String get quizCerts => 'Quiz Certs.';
@@ -1436,7 +1472,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareCertificate => 'Share Certificate';
 
   @override
-  String get shareCertificateDesc => 'You can share this certificate using social networks\nand encourage others to learn.';
+  String get shareCertificateDesc =>
+      'You can share this certificate using social networks\nand encourage others to learn.';
 
   @override
   String get takenDate => 'Taken Date';
@@ -1454,7 +1491,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get certificateOverview => 'Certificate Overview';
 
   @override
-  String get certificateOverviewDesc => 'You can evaluate your students learning quality\nusing the following information';
+  String get certificateOverviewDesc =>
+      'You can evaluate your students learning quality\nusing the following information';
 
   @override
   String get certificateStudents => 'Certificate Students';
@@ -1574,7 +1612,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newPassword => 'New Password';
 
   @override
-  String get passwordAndRetypePassNotMatch => 'The new password does not match the new password';
+  String get passwordAndRetypePassNotMatch =>
+      'The new password does not match the new password';
 
   @override
   String get nextBadges => 'Next Badges';
@@ -1667,7 +1706,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get inappLiveSession => 'In-app Live Session';
 
   @override
-  String get inappLiveSessionQuestion => 'Are you sure to create an in-app live session for this meeting?';
+  String get inappLiveSessionQuestion =>
+      'Are you sure to create an in-app live session for this meeting?';
 
   @override
   String get theMeetingDateIs => 'The meeting date is ';
@@ -1700,13 +1740,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privateContent => 'Private Content!';
 
   @override
-  String get privateContentDesc => 'You need to log in to access the course content.';
+  String get privateContentDesc =>
+      'You need to log in to access the course content.';
 
   @override
   String get pendingVerification => 'Pending Verification!';
 
   @override
-  String get pendingVerificationDesc => 'Your account is under review and you will be able to access the content after approval';
+  String get pendingVerificationDesc =>
+      'Your account is under review and you will be able to access the content after approval';
 
   @override
   String get private => 'Private';
@@ -1769,7 +1811,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get networkProblem => 'Network Problem...';
 
   @override
-  String get networkProblemDesc => 'Please check your internet connection and try again...';
+  String get networkProblemDesc =>
+      'Please check your internet connection and try again...';
 
   @override
   String get myCourses => 'My Courses';

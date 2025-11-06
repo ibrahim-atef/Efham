@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:modern_player/modern_player.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:pod_player/pod_player.dart';
 
 class FullScreenVideoPage extends StatefulWidget {
   final String url;
@@ -19,12 +19,13 @@ class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
   double _watermarkPositionX = 0.0; // متغير لتحديد مكان العلامة المائية أفقياً
   double _watermarkPositionY = 0.0; // متغير لتحديد مكان العلامة المائية رأسياً
   late Timer _timer;
-  bool _isWebViewLoaded = false;
-  late WebViewController _webViewController;
+  PodPlayerController? _podPlayerController;
 
   @override
   void initState() {
     super.initState();
+    // تهيئة PodPlayer
+    _initializePodPlayer();
     // إعداد الـ Timer لتحريك العلامة المائية كل 3 ثواني
     _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       setState(() {
@@ -40,59 +41,78 @@ class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
     });
   }
 
-  // دالة لبناء مشغل الفيديو
-  Widget _buildVideoPlayer() {
-    // لـ YouTube، استخدم WebView مباشرة لتجنب مشاكل YoutubeExplode
-    return _buildWebViewPlayer();
+  // دالة لتهيئة PodPlayer
+  void _initializePodPlayer() {
+    try {
+      String videoId = '';
+      if (widget.url.contains('youtube.com/watch?v=')) {
+        videoId = widget.url.split('v=')[1].split('&')[0];
+      } else if (widget.url.contains('youtu.be/')) {
+        videoId = widget.url.split('youtu.be/')[1].split('?')[0];
+      } else if (widget.url.contains('youtube.com/embed/')) {
+        videoId = widget.url.split('embed/')[1].split('?')[0];
+      }
+
+      if (videoId.isNotEmpty) {
+        final videoUrl = 'https://www.youtube.com/watch?v=$videoId';
+        _podPlayerController = PodPlayerController(
+          playVideoFrom: PlayVideoFrom.youtube(videoUrl),
+          podPlayerConfig: const PodPlayerConfig(
+            autoPlay: true,
+            isLooping: false,
+            videoQualityPriority: [720, 480, 360],
+          ),
+        )..initialise();
+      }
+    } catch (e) {
+      print('Error initializing PodPlayer: $e');
+    }
   }
 
-  // دالة لبناء WebView لـ YouTube
-  Widget _buildWebViewPlayer() {
-    // إنشاء WebViewController مرة واحدة فقط
-    if (!_isWebViewLoaded) {
-      _webViewController = WebViewController()
-        ..setJavaScriptMode(JavaScriptMode.unrestricted)
-        ..setBackgroundColor(Colors.black)
-        ..setNavigationDelegate(
-          NavigationDelegate(
-            onPageStarted: (String url) {
-              print('WebView started loading: $url');
-            },
-            onPageFinished: (String url) {
-              print('WebView finished loading: $url');
-              setState(() {
-                _isWebViewLoaded = true;
-              });
-            },
-            onWebResourceError: (WebResourceError error) {
-              print('WebView error: ${error.description}');
-            },
-            onNavigationRequest: (NavigationRequest request) {
-              // منع التنقل غير المرغوب فيه
-              if (request.url.contains('youtube.com/embed/')) {
-                return NavigationDecision.navigate;
-              }
-              return NavigationDecision.prevent;
-            },
+  // دالة لبناء مشغل الفيديو
+  Widget _buildVideoPlayer() {
+    if (_podPlayerController == null) {
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.black,
+        child: const Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
           ),
-        );
-
-      // تحميل URL مرة واحدة فقط
-      _webViewController
-          .loadRequest(Uri.parse(_getYouTubeEmbedUrl(widget.url)));
+        ),
+      );
     }
 
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      child: WebViewWidget(controller: _webViewController),
+      child: PodVideoPlayer(
+        controller: _podPlayerController!,
+        alwaysShowProgressBar: true,
+        podProgressBarConfig: const PodProgressBarConfig(
+          circleHandlerColor: Colors.red,
+          backgroundColor: Colors.white24,
+        ),
+      ),
     );
   }
 
-  // دالة لتحويل رابط YouTube إلى رابط embed
+  // دالة لتحويل رابط YouTube إلى رابط embed محسّن
   String _getYouTubeEmbedUrl(String url) {
+    // إذا كان الرابط فارغاً، إرجاعه كما هو
+    if (url.isEmpty) {
+      return url;
+    }
+
+    // إذا كان الرابط يحتوي على embed بالفعل، استخدمه مباشرة
+    if (url.contains('youtube.com/embed/')) {
+      return url;
+    }
+
     String videoId = '';
 
+    // استخراج معرف الفيديو من روابط مختلفة
     if (url.contains('youtube.com/watch?v=')) {
       videoId = url.split('v=')[1].split('&')[0];
     } else if (url.contains('youtu.be/')) {
@@ -100,9 +120,19 @@ class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
     }
 
     if (videoId.isNotEmpty) {
-      return 'https://www.youtube.com/embed/$videoId?autoplay=1&rel=0&modestbranding=1&loop=0&controls=1&showinfo=0&iv_load_policy=3&fs=1&disablekb=0&enablejsapi=1';
+      // استخدام رابط embed مباشر بدون HTML wrapper
+      return 'https://www.youtube.com/embed/$videoId?'
+          'autoplay=1&'
+          'rel=0&'
+          'modestbranding=1&'
+          'controls=1&'
+          'fs=1&'
+          'playsinline=1&'
+          'enablejsapi=1';
     }
 
+    // إذا لم نتمكن من استخراج videoId، استخدم الرابط الأصلي مباشرة
+    print('Using original URL directly: $url');
     return url;
   }
 
@@ -214,6 +244,8 @@ class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     // إلغاء الـ Timer عند تدمير الـ widget لتجنب التسريبات
     _timer.cancel();
+    // إيقاف وتحرير PodPlayer
+    _podPlayerController?.dispose();
     super.dispose();
   }
 
