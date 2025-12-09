@@ -53,6 +53,15 @@ Future<Response> httpGet(String url,
     http.Response res = http.Response(
         await response.stream.bytesToString(), response.statusCode);
 
+    // Log API Response
+    if (kDebugMode) {
+      log('=== API GET RESPONSE ===');
+      log('URL: $url');
+      log('Status Code: ${res.statusCode}');
+      log('Response Body: ${res.body}');
+      log('=== END API GET RESPONSE ===');
+    }
+
     // ip empty state
     try {
       var data = jsonDecode(res.body);
@@ -146,6 +155,15 @@ Future<Response> httpPost(String url, dynamic body,
         await response.stream.bytesToString(), response.statusCode);
     print('Response body length: ${res.body.length}');
     print('Response body: ${res.body}');
+    
+    // Log API Response using log function
+    if (kDebugMode) {
+      log('=== API POST RESPONSE ===');
+      log('URL: $url');
+      log('Status Code: ${res.statusCode}');
+      log('Response Body: ${res.body}');
+      log('=== END API POST RESPONSE ===');
+    }
 
     if (res.statusCode == 401) {
       print('Unauthorized (401) - redirecting to login');
@@ -205,6 +223,15 @@ Future<Response> httpDelete(String url, dynamic body,
     http.Response res = http.Response(
         await response.stream.bytesToString(), response.statusCode);
 
+    // Log API Response
+    if (kDebugMode) {
+      log('=== API DELETE RESPONSE ===');
+      log('URL: $url');
+      log('Status Code: ${res.statusCode}');
+      log('Response Body: ${res.body}');
+      log('=== END API DELETE RESPONSE ===');
+    }
+
     if (res.statusCode == 401) {
       if (isRedirectingStatusCode) {
         nextRoute(LoginPage.pageName, isClearBackRoutes: true);
@@ -260,6 +287,15 @@ Future<Response> httpPut(String url, dynamic body,
 
     http.Response res = http.Response(
         await response.stream.bytesToString(), response.statusCode);
+
+    // Log API Response
+    if (kDebugMode) {
+      log('=== API PUT RESPONSE ===');
+      log('URL: $url');
+      log('Status Code: ${res.statusCode}');
+      log('Response Body: ${res.body}');
+      log('=== END API PUT RESPONSE ===');
+    }
 
     if (res.statusCode == 401) {
       if (isRedirectingStatusCode) {
@@ -361,6 +397,15 @@ Future<Response> httpGetWithToken(dynamic url,
     http.Response res = http.Response(
         await response.stream.bytesToString(), response.statusCode);
 
+    // Log API Response
+    if (kDebugMode) {
+      log('=== API GET WITH TOKEN RESPONSE ===');
+      log('URL: $url');
+      log('Status Code: ${res.statusCode}');
+      log('Response Body: ${res.body}');
+      log('=== END API GET WITH TOKEN RESPONSE ===');
+    }
+
     if (res.statusCode == 401) {
       if (isRedirectingStatusCode) {
         nextRoute(LoginPage.pageName, isClearBackRoutes: true);
@@ -401,8 +446,14 @@ Future<dio.Response> dioPost(String url, dynamic body,
       .post(url, data: body, options: dio.Options(headers: headers))
       .timeout(const Duration(seconds: 30));
 
-  // print(res.data.toString());
-  // log(utf8.decode(res.bodyBytes));
+  // Log API Response
+  if (kDebugMode) {
+    log('=== API DIO POST RESPONSE ===');
+    log('URL: $url');
+    log('Status Code: ${res.statusCode}');
+    log('Response Data: ${res.data}');
+    log('=== END API DIO POST RESPONSE ===');
+  }
 
   if (res.statusCode == 401) {
     if (isRedirectingStatusCode) {

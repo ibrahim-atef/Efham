@@ -1,10 +1,5 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:webinar/app/models/register_config_model.dart';
 import 'package:webinar/app/pages/authentication_page/login_page.dart';
 import 'package:webinar/app/pages/authentication_page/verify_code_page.dart';
@@ -241,10 +236,10 @@ class _RegisterPageState extends State<RegisterPage> {
     try {
       List<CategoryModel> allCategories = await CategoriesService.categories();
       print(allCategories);
-      allCategories.forEach((Category) {
+      for (var Category in allCategories) {
         print(Category.subCategories);
         print("Category");
-      });
+      }
       print("allCategories");
 
       if (mounted) {

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -246,39 +247,38 @@ class _LoginPageState extends State<LoginPage> {
                   space(25),
 
                   // Other Register Method
-                  if (PublicData.apiConfigData?['showOtherRegisterMethod'] ==
-                      '1') ...{
-                    space(15),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white, borderRadius: borderRadius()),
-                        width: getSize().width,
-                        height: 52,
-                        child: Row(
-                          children: [
-                            // email
-                            AuthWidget.accountTypeWidget(appText.email,
-                                otherRegisterMethod ?? '', 'email', () {
-                              setState(() {
-                                otherRegisterMethod = 'email';
-                                isPhoneNumber = false;
-                                mailController.clear();
-                              });
-                            }),
+                  space(15),
+                  Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white, borderRadius: borderRadius()),
+                      width: getSize().width,
+                      height: 52,
+                      child: Row(
+                        children: [
+                          // email
+                          AuthWidget.accountTypeWidget(
+                              appText.email, otherRegisterMethod ?? '', 'email',
+                              () {
+                            setState(() {
+                              otherRegisterMethod = 'email';
+                              isPhoneNumber = false;
+                              mailController.clear();
+                            });
+                          }),
 
-                            // email
-                            AuthWidget.accountTypeWidget(appText.phone,
-                                otherRegisterMethod ?? '', 'phone', () {
-                              setState(() {
-                                otherRegisterMethod = 'phone';
-                                isPhoneNumber = true;
-                                mailController.clear();
-                              });
-                            }),
-                          ],
-                        )),
-                    space(15),
-                  },
+                          // phone
+                          AuthWidget.accountTypeWidget(
+                              appText.phone, otherRegisterMethod ?? '', 'phone',
+                              () {
+                            setState(() {
+                              otherRegisterMethod = 'phone';
+                              isPhoneNumber = true;
+                              mailController.clear();
+                            });
+                          }),
+                        ],
+                      )),
+                  space(15),
 
                   // input
                   Column(
@@ -351,9 +351,30 @@ class _LoginPageState extends State<LoginPage> {
                               isSendingData = true;
                             });
 
+                            // Log Request
+                            String username =
+                                '${isPhoneNumber ? countryCode.dialCode!.replaceAll('+', '') : ''}${mailController.text.trim()}';
+                            String password = passwordController.text.trim();
+
+                            log('=== LOGIN REQUEST ===');
+                            log('Method: POST');
+                            log('URL: ${Constants.baseUrl}login');
+                            log('Username: $username');
+                            log('Password: ${password.isNotEmpty ? "***" : "empty"}');
+                            log('Login Type: ${isPhoneNumber ? "Phone" : "Email"}');
+                            if (isPhoneNumber) {
+                              log('Country Code: ${countryCode.dialCode}');
+                              log('Country: ${countryCode.name}');
+                            }
+                            log('====================');
+
                             bool res = await AuthenticationService.login(
-                                '${isPhoneNumber ? countryCode.dialCode!.replaceAll('+', '') : ''}${mailController.text.trim()}',
-                                passwordController.text.trim());
+                                username, password);
+
+                            // Log Response
+                            log('=== LOGIN RESPONSE ===');
+                            log('Success: $res');
+                            log('=====================');
 
                             setState(() {
                               isSendingData = false;
@@ -412,11 +433,11 @@ class _LoginPageState extends State<LoginPage> {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.2),
                             blurRadius: 5,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
-                      child: Center(
+                      child: const Center(
                         child: FaIcon(
                           FontAwesomeIcons.whatsapp,
                           color: Colors.white,
