@@ -59,14 +59,14 @@ android {
         versionName flutterVersionName
     }
 
-//    signingConfigs {
-//         release {
-//                 keyAlias = keystoreProperties['keyAlias']
-//                 keyPassword = keystoreProperties['keyPassword']
-//                 storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-//                 storePassword = keystoreProperties['storePassword']
-//             }
-//        }
+    signingConfigs {
+         release {
+                 keyAlias = keystoreProperties['keyAlias']
+                 keyPassword = keystoreProperties['keyPassword']
+                 storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                 storePassword = keystoreProperties['storePassword']
+             }
+        }
 
     packagingOptions {
         // Fixes duplicate libraries build issue,
@@ -91,8 +91,7 @@ android {
             shrinkResources false
         }
         release {
-            // Using debug signing for now (no keystore required)
-            signingConfig = signingConfigs.debug
+            signingConfig = signingConfigs.release
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
