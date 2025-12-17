@@ -102,7 +102,7 @@ class _VimeoVideoPlayerState extends State<PodVideoPlayerDev> {
         podPlayerConfig: const PodPlayerConfig(
           autoPlay: false,
           isLooping: false,
-          videoQualityPriority: [720, 480, 360],
+          videoQualityPriority: [2160, 1440, 1080, 720, 480, 360, 240],
         ),
       )..initialise().then((_) {
           setState(() {

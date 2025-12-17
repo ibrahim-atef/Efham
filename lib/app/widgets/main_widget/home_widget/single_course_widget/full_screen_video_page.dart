@@ -60,7 +60,7 @@ class _FullScreenVideoPageState extends State<FullScreenVideoPage> {
           podPlayerConfig: const PodPlayerConfig(
             autoPlay: true,
             isLooping: false,
-            videoQualityPriority: [720, 480, 360],
+            videoQualityPriority: [2160, 1440, 1080, 720, 480, 360, 240],
           ),
         )..initialise();
       }

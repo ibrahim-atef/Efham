@@ -1,5 +1,8 @@
+// ignore: uri_does_not_exist
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// ignore: uri_does_not_exist
 import 'package:flutter_gen/gen_l10n/app_localizations_ar.dart';
+// ignore: uri_does_not_exist
 import 'package:flutter_gen/gen_l10n/app_localizations_en.dart';
 import 'package:webinar/common/data/app_language.dart';
 import 'package:webinar/locator.dart';

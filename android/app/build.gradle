@@ -29,8 +29,8 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.anmka.efham"
-    compileSdk 34
+    namespace "com.anmka.efhamm"
+    compileSdk 35
     ndkVersion "26.1.10909125"
 
 
@@ -52,9 +52,9 @@ android {
     
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.anmka.efham"
+        applicationId "com.anmka.efhamm"
         minSdkVersion flutter.minSdkVersion
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -121,11 +121,12 @@ dependencies {
 apply plugin: 'com.google.gms.google-services'
 android.buildTypes.release.ndk.debugSymbolLevel = 'FULL'
 
-// Copy APK files to root build directory for tools that expect them there
+// Copy APK and AAB files to root build directory for tools that expect them there
 afterEvaluate {
     android.applicationVariants.all { variant ->
         def variantName = variant.name.capitalize()
         def packageTask = tasks.findByName("package${variantName}")
+        def bundleTask = tasks.findByName("bundle${variantName}")
         
         if (packageTask != null) {
             packageTask.doLast {
@@ -169,6 +170,42 @@ afterEvaluate {
                         rename { "app-${buildType}-flutter.apk" }
                     }
                     println "Copied Flutter APK to ${rootBuildDir}/app-${buildType}-flutter.apk"
+                }
+            }
+        }
+        
+        // Handle bundle files (AAB)
+        if (bundleTask != null) {
+            bundleTask.doLast {
+                def buildType = variant.buildType.name
+                def bundleFile = file("build/outputs/bundle/${buildType}/app-${buildType}.aab")
+                def rootBuildDir = file("${rootProject.projectDir}/../build")
+                def flutterBundleDir = file("${rootProject.projectDir}/../build/app/outputs/bundle/${buildType}")
+                
+                if (!rootBuildDir.exists()) {
+                    rootBuildDir.mkdirs()
+                }
+                
+                if (!flutterBundleDir.exists()) {
+                    flutterBundleDir.mkdirs()
+                }
+                
+                // Copy bundle file to root build directory
+                if (bundleFile.exists()) {
+                    copy {
+                        from bundleFile
+                        into rootBuildDir
+                        rename { "app-${buildType}.aab" }
+                    }
+                    println "Copied AAB to ${rootBuildDir}/app-${buildType}.aab"
+                    
+                    // Also copy to Flutter's expected location
+                    copy {
+                        from bundleFile
+                        into flutterBundleDir
+                        rename { "app-${buildType}.aab" }
+                    }
+                    println "Copied AAB to ${flutterBundleDir}/app-${buildType}.aab"
                 }
             }
         }
